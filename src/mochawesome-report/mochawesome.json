@@ -1,0 +1,104 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2021-02-15T11:20:47.999Z",
+    "end": "2021-02-15T11:20:48.006Z",
+    "duration": 7,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "db380348-6264-45ff-9ba8-b94801c2ddaa",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4d7d2016-d6f5-437a-baba-7f9fc92ff87a",
+          "title": "Testing Backend. ",
+          "fullFile": "/home/lucifer/Work/WebDev/Newton School/Self/AppointMent-Engine-Fullstack/src/__tests__/server.test.js",
+          "file": "/__tests__/server.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Server should details of a given date.",
+              "fullTitle": "Testing Backend.  Server should details of a given date.",
+              "timedOut": false,
+              "duration": 0,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "chai.request(server)\n    .get(\"/api/event?date=2021-01-19\")\n    .end((err, res) => {\n        expect(res).to.have.status(200);\n        console.log(res.body);\n        \n    });",
+              "err": {
+                "message": "TypeError: app.address is not a function",
+                "estack": "TypeError: app.address is not a function\n    at serverAddress (node_modules/chai-http/lib/request.js:282:18)\n    at new Test (node_modules/chai-http/lib/request.js:271:53)\n    at Object.obj.(anonymous function) [as get] (node_modules/chai-http/lib/request.js:239:14)\n    at Context.it (__tests__/server.test.js:12:10)",
+                "diff": null
+              },
+              "uuid": "8b6dadc5-2e7e-46c3-91a3-bcafc3d27c6b",
+              "parentUUID": "4d7d2016-d6f5-437a-baba-7f9fc92ff87a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "8b6dadc5-2e7e-46c3-91a3-bcafc3d27c6b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "8.2.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.1.0"
+    }
+  }
+}

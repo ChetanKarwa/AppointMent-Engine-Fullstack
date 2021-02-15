@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from "react";
 import Calendar from 'react-calendar'
-import {getTodaysDetails} from '../utils/api'
+import {getTodaysDetails,getNames,addName,addAppointment} from '../utils/api'
 import Form from './Form'
 import 'react-calendar/dist/Calendar.css';
 
@@ -23,13 +23,34 @@ const convertDate = (date) => {
 
 const slots = ["10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00"]
 const App = () => {
-  const [name,setName] = useState("");
+  const [dates,setDates] = useState([]);
+  const [names,setNames] = useState([]);
+  const [name,setName] = useState([]);
   const [date,setDate] = useState(new Date());
   const [data,setData] = useState([]);
-  const [editDetails,setEditDetails] = useState({mode:true, date, slot:0});
+  const [editDetails,setEditDetails] = useState({mode:false, date, slot:0});
   useEffect(()=>{
     getTodaysDetails(convertDate(date),setData);
   },[date]);
+  useEffect(()=>{
+    addName(names);
+  },[names]);
+  useEffect(()=>{
+    getNames(setNames);
+  },[])
+  useEffect(()=>{
+    console.log(names);
+  },[names])
+
+  const addNewAppointment = async(name_id) => {
+    let newSlots = data;
+    newSlots[editDetails.slot] = name_id;
+    setData(newSlots);
+    setEditDetails({...editDetails,mode:false,slot:-1})
+    await addAppointment(data,convertDate(date));
+    await getTodaysDetails(convertDate(date),setData);
+  }
+  
   return (
     <div id="main">
       <Calendar onChange = {(date) => {setDate(date)}} value = {date}/>
@@ -43,7 +64,11 @@ const App = () => {
         })}
       </div>
       {
-        editDetails.mode ? <Form name = {name} setName = {setName}/> : <></>
+        editDetails.mode ? <div>
+        <h2>
+          Fill the details and submit to Book Appointment for {slots[editDetails.slot]}
+        </h2>
+        <Form names = {names} setNames = {setNames} name = {name} setName = {setName} addNewAppointment = {addNewAppointment}/></div> : <></>
       }
     </div>
   )

@@ -15,37 +15,39 @@ export const getTodaysDetails = async(date,setData) => {
     )
 }
 
-// export const addTodo = async(currentTodo, todos, setTodos) => {  
-//   await fetch(URL, {
-//     method: 'POST',
-//     body: JSON.stringify({
-//       task: currentTodo,
-//       done: false
-//     }),
-//     headers: { 'Content-Type': 'application/json' },
-//   })
-//   .then(response => response.json())
-//   .catch(e => console.log(e))
-// }
+export const getNames = async(setNames) => {
+  await fetch(`/api/names`, {
+    method: 'GET',
+    type: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+  }).then(response => response.json())
+    .then((result) => {
+        setNames(result);
+      }
+    )
+}
+export const addName = async(names) => {
+  await fetch(`/api/names`, {
+    method: 'POST',
+    type: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body : JSON.stringify({name : names[names.length -1]})
+  }).then(response => response.json())
+    .then((result) => {
+        console.log(result);
+      }
+    )
+}
 
-// export const deleteTodo = async(id) => {
-//   await fetch(URL+String(id), {
-//     method: 'DELETE',
-//     headers: { 'Content-Type': 'application/json' },
-//   })
-//   .then(response => response.json())
-//   .catch(e => console.log(e))
-// }
-
-// export const editTodo = async(id, done,task) => {
-//   await fetch(URL+String(id), {
-//     method: 'PUT',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({
-//       task: task,
-//       done: done
-//     }),
-//   })
-//   .then(response => response.json())
-//   .catch(e => console.log(e))
-// }
+export const addAppointment = async(slots,date) => {
+  await fetch(`/api/events/${date}`, {
+    method: 'POST',
+    type: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body : JSON.stringify({slots})
+  }).then(response => response.json())
+    .then((result) => {
+        console.log(result);
+      }
+    )
+}
