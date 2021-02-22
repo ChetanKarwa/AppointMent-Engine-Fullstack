@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 0,
     "failures": 1,
-    "start": "2021-02-15T11:20:47.999Z",
-    "end": "2021-02-15T11:20:48.006Z",
-    "duration": 7,
+    "start": "2021-02-15T13:36:54.350Z",
+    "end": "2021-02-15T13:37:54.412Z",
+    "duration": 60062,
     "testsRegistered": 1,
     "passPercent": 0,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "db380348-6264-45ff-9ba8-b94801c2ddaa",
+      "uuid": "1d1f802e-b33f-42f7-85f9-50866354a472",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "4d7d2016-d6f5-437a-baba-7f9fc92ff87a",
+          "uuid": "418429f7-ce76-4e11-8a6b-e2d1f0b427a8",
           "title": "Testing Backend. ",
           "fullFile": "/home/lucifer/Work/WebDev/Newton School/Self/AppointMent-Engine-Fullstack/src/__tests__/server.test.js",
           "file": "/__tests__/server.test.js",
@@ -37,22 +37,22 @@
             {
               "title": "Server should details of a given date.",
               "fullTitle": "Testing Backend.  Server should details of a given date.",
-              "timedOut": false,
-              "duration": 0,
+              "timedOut": true,
+              "duration": 60052,
               "state": "failed",
               "speed": null,
               "pass": false,
               "fail": true,
               "pending": false,
               "context": null,
-              "code": "chai.request(server)\n    .get(\"/api/event?date=2021-01-19\")\n    .end((err, res) => {\n        expect(res).to.have.status(200);\n        console.log(res.body);\n        \n    });",
+              "code": "chai.request(server)\n    .get(\"/api/events?date=2021-01-19\")\n    .end((err, res) => {\n        expect(res).to.have.status(200);\n        expect(res.body.length).eq(3);\n    });",
               "err": {
-                "message": "TypeError: app.address is not a function",
-                "estack": "TypeError: app.address is not a function\n    at serverAddress (node_modules/chai-http/lib/request.js:282:18)\n    at new Test (node_modules/chai-http/lib/request.js:271:53)\n    at Object.obj.(anonymous function) [as get] (node_modules/chai-http/lib/request.js:239:14)\n    at Context.it (__tests__/server.test.js:12:10)",
+                "message": "Error: Timeout of 60000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (/home/lucifer/Work/WebDev/Newton School/Self/AppointMent-Engine-Fullstack/src/__tests__/server.test.js)",
+                "estack": "Error: Timeout of 60000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (/home/lucifer/Work/WebDev/Newton School/Self/AppointMent-Engine-Fullstack/src/__tests__/server.test.js)",
                 "diff": null
               },
-              "uuid": "8b6dadc5-2e7e-46c3-91a3-bcafc3d27c6b",
-              "parentUUID": "4d7d2016-d6f5-437a-baba-7f9fc92ff87a",
+              "uuid": "98eb8878-034c-4c09-8c91-e9249c3e7318",
+              "parentUUID": "418429f7-ce76-4e11-8a6b-e2d1f0b427a8",
               "isHook": false,
               "skipped": false
             }
@@ -60,11 +60,11 @@
           "suites": [],
           "passes": [],
           "failures": [
-            "8b6dadc5-2e7e-46c3-91a3-bcafc3d27c6b"
+            "98eb8878-034c-4c09-8c91-e9249c3e7318"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 0,
+          "duration": 60052,
           "root": false,
           "rootEmpty": false,
           "_timeout": 60000

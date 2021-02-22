@@ -1,4 +1,3 @@
-const refreshAll = require("./createdatabase");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -7,7 +6,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const con = require("./connector");
 const cors = require('cors');
-refreshAll();
 app.use(cors())
 // free-slots?date=  GET
 app.get("/api/events/:date", (req, res) => {
@@ -88,4 +86,4 @@ app.get("/api/events", (req, res) => {
   });
 
 app.listen(port);
-exports.app = app;
+module.exports = app;

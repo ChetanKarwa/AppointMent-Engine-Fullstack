@@ -6,16 +6,14 @@ const server = require("../index.js");
 
 describe("Testing Backend. ", () => {
 
-it("Server should details of a given date.", (done) => {
-    
-    chai.request(server)
-        .get("/api/event?date=2021-01-19")
-        .end((err, res) => {
-            expect(res).to.have.status(200);
-            console.log(res.body);
-            
-        });
-});
+  it("Server should details of a given date.", (done) => {
+      
+      chai.request(server)
+          .get("/api/events?date=2021-01-19")
+          .end((err, res) => {
+              expect(res).to.have.status(200);
+          });
+  });
 
 });
 
